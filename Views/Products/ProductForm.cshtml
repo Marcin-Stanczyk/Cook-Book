@@ -1,0 +1,76 @@
+﻿@model CookBook.ViewModels.ProductFormViewModel
+@{
+    ViewBag.Title = "New Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Product.Name == null)
+{
+    <h2>New Product</h2>
+}
+else
+{
+    <h2>Edit @Model.Product.Name</h2>
+}
+
+@Html.ValidationSummary()
+
+@using (Html.BeginForm("Save", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    if (Model.Product.PhotoPath != null)
+    {
+        <img src="@Url.Content(Model.Product.PhotoPath)" alt="Product's photo" style="float: right" />
+    }
+
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(p => p.Product.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Product.Name)
+        @Html.TextBoxFor(p => p.Product.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Product.Name)
+    </div>
+
+
+    <div class="form-group">
+
+        @Html.LabelFor(p => p.Product.CategoryId)
+        @Html.DropDownListFor(p => p.Product.CategoryId, new SelectList(Model.Categories, "Id", "Name"), "Select Category", new { @class = "form-control" })
+
+
+    </div>
+
+    <div class="form-group form-check">
+        <label class="form-check-label" for="exampleCheck1">In stock? </label>
+        @Html.CheckBoxFor(m => m.Product.InStock)
+
+    </div>
+
+    <div>
+        @Html.LabelFor(p => p.Product.PhotoPath)
+        @Html.HiddenFor(p => p.Product.PhotoPath)
+        <input type="file" name="File" value="Browse" />
+    </div>
+
+    <br />
+
+
+    <table>
+        <tr>
+            <td>
+                <button type="submit" name="submit" class="btn btn-primary" value="Upload">Save</button>
+            </td>
+            <td>
+                @Html.ActionLink("Cancel", "Index", "Products", new { @class = "btn btn-default" })
+            </td>
+        </tr>
+    </table>
+
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

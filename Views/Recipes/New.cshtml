@@ -1,0 +1,221 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "New Recipe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Recipe</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+            <form id="newRecipe">
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <div class="tt-container">
+                        <input id="name" name="name" type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <div class="tt-container">
+                        <input id="description" name="description" type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Instruction Steps</label>
+                    <div class="tt-container">
+                        <input id="instructionInput" name="instructions" type="text" class="form-control inlined" />
+                        <button id="add" class="btn btn-primary">+</button>
+                    </div>
+                </div>
+
+
+                <h4>Add ingredient:</h4>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Product</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Amount</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Unit</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <select id="products" class="form-control">
+                            <option value="" disabled selected></option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="number" id="amount" value="" class="form-control inlined" />
+                    </div>
+                    <div class="col-md-3">
+
+                        <select id="units" class="form-control inlined">
+                            <option value="" selected></option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+
+                        <button id="addIngredient" class="btn btn-primary">+</button>
+                    </div>
+                </div>
+
+                @*Submit button*@
+                
+                <p></p>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="submit" class="btn btn-success btn-block" id="submit" />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-4" >
+            <h3 id="nameDisplay"> </h3>
+            <p id="descriptionDisplay"> </p>
+            <ol id="instructionsList"> </ol>
+            <ul id="productsList"> </ul>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+
+
+
+        $(document).ready(function () {
+
+            
+            var recipe = {
+                productIds: [],
+                unitIds: [],
+                amounts: [],
+                instructionSteps: ""
+            };
+
+
+            // Populate Name & Description on screen
+            $("#name").focusout(function () {
+                var nameVal = $(this).val();
+                $("#nameDisplay").text(nameVal);
+            });
+
+            $("#description").focusout(function () {
+                var descriptionVal = $(this).val();
+                $("#descriptionDisplay").text(descriptionVal);
+            });
+
+            // Populate Instruction Steps List on '+' or ENTER click
+
+            $("#add").on("click", function () {
+
+                event.preventDefault();
+
+                var input = $("#instructionInput").val();
+
+                
+                if (input != null) {
+
+
+                    $("#instructionsList").append("<li>" + input + "<button class='remove btn btn-sm btn-danger'>X</button>" + "</li>");
+                    $("#instructionInput").val("");
+                        
+                    $(".remove").on("click", function () {
+                        $(this).parent().remove();
+                    });
+                }
+            });
+
+            $("instructionInput").keyup(function (event) {
+                if (event.keyCode == 13) {
+                    $("#add").click();
+                }
+            });
+        
+            
+
+            // Populate dropdown for products
+            $.ajax({
+                url: "/api/products",
+                success: function (products) {
+                    $.each(products, function (i, product) {
+                        $("#products").append("<option value='" + product.id + "'>" + product.name + "</option>");
+                    });
+                }
+            });
+
+            // Populate dropdown for units
+            $.ajax({
+                url: "/api/units",
+                success: function (units) {
+                    $.each(units, function (i, unit) {
+                        $("#units").append("<option value='" + unit.id + "'>" + unit.name + "</option>");
+                    })
+                }
+            });
+
+            // On screen products list
+            $("#addIngredient").on("click", function () {
+                event.preventDefault();
+
+                recipe.productIds.push($("#products option:selected").val());
+                recipe.unitIds.push($("#units option:selected").val());
+                recipe.amounts.push($("#amount").val());
+
+                $("#productsList").append("<li class='list-group-item'>"
+                    + $("#products option:selected").text()
+                    + " "
+                    + $("#amount").val()
+                    + " "
+                    + $("#units option:selected").text()
+                    + " </li>");
+
+            });
+
+
+
+            // POST to db
+
+            $("#submit").on("click", function () {
+
+                event.preventDefault();
+
+                recipe.name = $("#nameDisplay").text();
+                recipe.description = $("#descriptionDisplay").text();
+                
+                
+
+                $("#instructionsList li").each(function () {
+                    recipe.instructionSteps += $(this).text();
+                });
+
+                $.ajax({
+                    url: "/api/recipes",
+                    method: "post",
+                    data: recipe
+                   
+                })
+                    .done(function () {
+                        location.href = "/recipes"
+                    });
+
+            });
+        });
+
+
+    </script>
+    
+}

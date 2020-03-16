@@ -1,0 +1,55 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Recipes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Recipes</h2>
+@Html.ActionLink("Add Recipe", "New", "Recipes", new { @class = "btn btn-success" })
+
+
+@*@if(Model.Count() == 0)
+{
+    <hr />
+    <p>There are no recipes.</p>
+}
+else
+{*@
+    <table id="recipes" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+@*}*@
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $("#recipes").DataTable({
+                ajax: {
+                    url: "/api/recipes",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        width: "33%",
+                        data: "name",
+                        render: function (data, type, recipe) {
+                            return "<a href='/recipes/details/" + recipe.id + "'>" + recipe.name + "</a>";
+                        }
+                    },
+                    {
+                        width: "67%",
+                        data: "description"
+                    }
+                ]
+            });
+        });
+    </script>
+}

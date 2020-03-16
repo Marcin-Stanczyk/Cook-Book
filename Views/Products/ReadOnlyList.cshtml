@@ -1,0 +1,50 @@
+﻿@model List<CookBook.Models.Product>
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Products</h2>
+<hr />
+<div class="table-responsive">
+    <table id="products" class="table table-bordered table-hover">
+
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            // DataTable Receiving data from WEB API
+            var table = $("#products").DataTable({
+                ajax: {
+                    url: "/api/products",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, product) {
+                            return "<a href='/api/products/" + product.id + "'>" + "<img src='" + product.photoPath + "' width='80' height='80' />" + " " + product.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "category.name"
+                    }
+                ]
+
+            });
+        });
+    </script>
+}

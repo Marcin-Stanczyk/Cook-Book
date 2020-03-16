@@ -1,0 +1,63 @@
+﻿@model CookBook.ViewModels.RecipeViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <h1 id="recipeName" recipeId="@Model.Recipe.Id">@Model.Recipe.Name</h1>
+
+                <p id="description">@Model.Recipe.Description</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Ingredients:</h3>
+                <ul id="ingredients">
+                    @for(int i=0; i<@Model.Products.Count; i++)
+                    {
+                        <li>@Model.Products[i].Name @Model.Amounts[i] @Model.Units[i].Name</li>
+                    }
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>Instructions:</h3>
+                <ol id="instructions">
+                    @for(int i=0; i<Model.Instructions.Count; i++)
+                    {
+                        <li>@Model.Instructions[i]</li>
+                    }
+                </ol>
+            </div>
+        </div>
+    </div>
+
+
+
+
+@section scripts
+{
+    <script>
+        //$(document).ready(function () {
+        //    var products;
+        //    var units;
+        //    var amounts;
+
+        //    $.ajax({
+        //        url: "/api/recipes/" + $("#recipeName").attr("recipeId"),
+        //        success: function (recipeVm) {
+        //            products = recipeVm.products;
+        //            units = recipeVm.units;
+        //            amounts = recipeVm.amounts;
+        //        }
+        //    });
+
+
+
+
+        //});
+    </script>
+}

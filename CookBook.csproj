@@ -1,0 +1,981 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9F3EEF2A-0ADE-4F40-A718-88000D038A80}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CookBook</RootNamespace>
+    <AssemblyName>CookBook</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44363</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.AspNet, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Glimpse.AspNet.1.8.0\lib\net45\Glimpse.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Core, Version=1.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.EF6, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Glimpse.EF6.1.6.5\lib\net45\Glimpse.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>packages\Microsoft.Owin.Security.Facebook.4.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>packages\Microsoft.Owin.Security.Google.4.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>packages\Microsoft.Owin.Security.Twitter.4.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\ProductsController.cs" />
+    <Compile Include="Controllers\API\RecipesController.cs" />
+    <Compile Include="Controllers\API\UnitsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\RecipesController.cs" />
+    <Compile Include="Dtos\CategoryDto.cs" />
+    <Compile Include="Dtos\ProductDto.cs" />
+    <Compile Include="Dtos\RecipeDto.cs" />
+    <Compile Include="GlimpseSecurityPolicy.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001241114535_InitialModel.cs" />
+    <Compile Include="Migrations\202001241114535_InitialModel.Designer.cs">
+      <DependentUpon>202001241114535_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001241339064_UpdateRecipeAndProductModels.cs" />
+    <Compile Include="Migrations\202001241339064_UpdateRecipeAndProductModels.Designer.cs">
+      <DependentUpon>202001241339064_UpdateRecipeAndProductModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001241343421_PopulateUnitsTable.cs" />
+    <Compile Include="Migrations\202001241343421_PopulateUnitsTable.Designer.cs">
+      <DependentUpon>202001241343421_PopulateUnitsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001241434388_CorrectProductClass.cs" />
+    <Compile Include="Migrations\202001241434388_CorrectProductClass.Designer.cs">
+      <DependentUpon>202001241434388_CorrectProductClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001271050542_DeleteUnitAndAmount.cs" />
+    <Compile Include="Migrations\202001271050542_DeleteUnitAndAmount.Designer.cs">
+      <DependentUpon>202001271050542_DeleteUnitAndAmount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002061156357_DeletePhotoClass.cs" />
+    <Compile Include="Migrations\202002061156357_DeletePhotoClass.Designer.cs">
+      <DependentUpon>202002061156357_DeletePhotoClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002061958292_RestoreRecipeProductTable.cs" />
+    <Compile Include="Migrations\202002061958292_RestoreRecipeProductTable.Designer.cs">
+      <DependentUpon>202002061958292_RestoreRecipeProductTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002101140529_AddValidation.cs" />
+    <Compile Include="Migrations\202002101140529_AddValidation.Designer.cs">
+      <DependentUpon>202002101140529_AddValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002101402164_AddManyToManyRelationshipBetweenProductsAndRecipes.cs" />
+    <Compile Include="Migrations\202002101402164_AddManyToManyRelationshipBetweenProductsAndRecipes.Designer.cs">
+      <DependentUpon>202002101402164_AddManyToManyRelationshipBetweenProductsAndRecipes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002101403072_AddManyToManyRelationshipBetweenProductsAndRecipes1.cs" />
+    <Compile Include="Migrations\202002101403072_AddManyToManyRelationshipBetweenProductsAndRecipes1.Designer.cs">
+      <DependentUpon>202002101403072_AddManyToManyRelationshipBetweenProductsAndRecipes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002101418302_AddManyToManyRelationshipBetweenProductsAndRecipes2.cs" />
+    <Compile Include="Migrations\202002101418302_AddManyToManyRelationshipBetweenProductsAndRecipes2.Designer.cs">
+      <DependentUpon>202002101418302_AddManyToManyRelationshipBetweenProductsAndRecipes2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002111135104_AddCategoryUnitAndIngredientModels.cs" />
+    <Compile Include="Migrations\202002111135104_AddCategoryUnitAndIngredientModels.Designer.cs">
+      <DependentUpon>202002111135104_AddCategoryUnitAndIngredientModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002111145055_AddCategoryUnitAndIngredientModels1.cs" />
+    <Compile Include="Migrations\202002111145055_AddCategoryUnitAndIngredientModels1.Designer.cs">
+      <DependentUpon>202002111145055_AddCategoryUnitAndIngredientModels1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002121901282_PopulateUnitDB.cs" />
+    <Compile Include="Migrations\202002121901282_PopulateUnitDB.Designer.cs">
+      <DependentUpon>202002121901282_PopulateUnitDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002121926261_PopulateCategoryTable.cs" />
+    <Compile Include="Migrations\202002121926261_PopulateCategoryTable.Designer.cs">
+      <DependentUpon>202002121926261_PopulateCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002141409490_TruncateProductsTable.cs" />
+    <Compile Include="Migrations\202002141409490_TruncateProductsTable.Designer.cs">
+      <DependentUpon>202002141409490_TruncateProductsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002141416164_Truncate2ProductsTable.cs" />
+    <Compile Include="Migrations\202002141416164_Truncate2ProductsTable.Designer.cs">
+      <DependentUpon>202002141416164_Truncate2ProductsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002141431407_UpdateProductModelDataAnnotations.cs" />
+    <Compile Include="Migrations\202002141431407_UpdateProductModelDataAnnotations.Designer.cs">
+      <DependentUpon>202002141431407_UpdateProductModelDataAnnotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002171830229_UpdateProductModel.cs" />
+    <Compile Include="Migrations\202002171830229_UpdateProductModel.Designer.cs">
+      <DependentUpon>202002171830229_UpdateProductModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002171902139_DropColumnCategory_Id.cs" />
+    <Compile Include="Migrations\202002171902139_DropColumnCategory_Id.Designer.cs">
+      <DependentUpon>202002171902139_DropColumnCategory_Id.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002171955148_CategoryIdNotNullable.cs" />
+    <Compile Include="Migrations\202002171955148_CategoryIdNotNullable.Designer.cs">
+      <DependentUpon>202002171955148_CategoryIdNotNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002172007146_AddPhotoModel.cs" />
+    <Compile Include="Migrations\202002172007146_AddPhotoModel.Designer.cs">
+      <DependentUpon>202002172007146_AddPhotoModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002172054416_DeletePhotoModel.cs" />
+    <Compile Include="Migrations\202002172054416_DeletePhotoModel.Designer.cs">
+      <DependentUpon>202002172054416_DeletePhotoModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002180616362_UpdateProductDataAnnotations.cs" />
+    <Compile Include="Migrations\202002180616362_UpdateProductDataAnnotations.Designer.cs">
+      <DependentUpon>202002180616362_UpdateProductDataAnnotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002182255559_UpdateIngredientModel.cs" />
+    <Compile Include="Migrations\202002182255559_UpdateIngredientModel.Designer.cs">
+      <DependentUpon>202002182255559_UpdateIngredientModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002191213094_SeedUsers.cs" />
+    <Compile Include="Migrations\202002191213094_SeedUsers.Designer.cs">
+      <DependentUpon>202002191213094_SeedUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003140245015_ExchangeIngredientsToProducts.cs" />
+    <Compile Include="Migrations\202003140245015_ExchangeIngredientsToProducts.Designer.cs">
+      <DependentUpon>202003140245015_ExchangeIngredientsToProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003140247498_AddRecipesListToProductModel.cs" />
+    <Compile Include="Migrations\202003140247498_AddRecipesListToProductModel.Designer.cs">
+      <DependentUpon>202003140247498_AddRecipesListToProductModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003140312165_ExchangeRecipeProductsToIngredientsTable.cs" />
+    <Compile Include="Migrations\202003140312165_ExchangeRecipeProductsToIngredientsTable.Designer.cs">
+      <DependentUpon>202003140312165_ExchangeRecipeProductsToIngredientsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003140758030_AddUnitAndAmountToIngredientModel.cs" />
+    <Compile Include="Migrations\202003140758030_AddUnitAndAmountToIngredientModel.Designer.cs">
+      <DependentUpon>202003140758030_AddUnitAndAmountToIngredientModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\RoleName.cs" />
+    <Compile Include="Models\Unit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ProductFormViewModel.cs" />
+    <Compile Include="ViewModels\RecipeViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\bootstrap-flatly.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.min.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.min.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\select.foundation.css" />
+    <Content Include="Content\DataTables\css\select.foundation.min.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\codera-logo-black-rotate.JPG" />
+    <Content Include="images\codera-logo-black-sm.png" />
+    <Content Include="images\codera-logo-black.JPG" />
+    <Content Include="images\codera-logo-rotate.JPG" />
+    <Content Include="images\codera-logo.JPG" />
+    <Content Include="images\codera-logo.png" />
+    <Content Include="images\cooking\bake.jpg" />
+    <Content Include="images\cooking\beat.jpg" />
+    <Content Include="images\cooking\boil.jpg" />
+    <Content Include="images\cooking\chop.jpg" />
+    <Content Include="images\cooking\cut.jpg" />
+    <Content Include="images\cooking\fry.jpg" />
+    <Content Include="images\cooking\grate.jpg" />
+    <Content Include="images\cooking\grill.jpg" />
+    <Content Include="images\cooking\mash.jpg" />
+    <Content Include="images\cooking\melt.jpg" />
+    <Content Include="images\cooking\mix.jpg" />
+    <Content Include="images\cooking\peel.jpg" />
+    <Content Include="images\cooking\roast.jpg" />
+    <Content Include="images\cooking\saute.jpg" />
+    <Content Include="images\cooking\slice.jpg" />
+    <Content Include="images\cooking\sprinkle.jpg" />
+    <Content Include="images\cooking\steam.jpg" />
+    <Content Include="images\cooking\stir-fry.jpg" />
+    <Content Include="images\cooking\stir.jpg" />
+    <Content Include="images\cooking\whisk.jpg" />
+    <Content Include="images\dinnerware\bowl.jpg" />
+    <Content Include="images\dinnerware\butter-knife.jpg" />
+    <Content Include="images\dinnerware\candlesticks.jpg" />
+    <Content Include="images\dinnerware\centrepiece.jpg" />
+    <Content Include="images\dinnerware\coasters.jpg" />
+    <Content Include="images\dinnerware\cup-saucer.jpg" />
+    <Content Include="images\dinnerware\dessert-fork-spoon.jpg" />
+    <Content Include="images\dinnerware\dinner-fork.jpg" />
+    <Content Include="images\dinnerware\dinner-plate.jpg" />
+    <Content Include="images\dinnerware\dinnerware.jpg" />
+    <Content Include="images\dinnerware\fish-knife.jpg" />
+    <Content Include="images\dinnerware\napkin.jpg" />
+    <Content Include="images\dinnerware\place-mat.jpg" />
+    <Content Include="images\dinnerware\place-setting.jpg" />
+    <Content Include="images\dinnerware\salt-and-pepper-shakers.jpg" />
+    <Content Include="images\dinnerware\setting-table.jpg" />
+    <Content Include="images\dinnerware\soup-spoon.jpg" />
+    <Content Include="images\dinnerware\steak-knife.jpg" />
+    <Content Include="images\dinnerware\sugar-bowl.jpg" />
+    <Content Include="images\dinnerware\table-knife.jpg" />
+    <Content Include="images\dinnerware\tumbler.jpg" />
+    <Content Include="images\dinnerware\water-jug.jpg" />
+    <Content Include="images\dinnerware\wine-glass.jpg" />
+    <Content Include="images\favicon.png" />
+    <Content Include="images\food\dining.jpg" />
+    <Content Include="images\food\food.jpg" />
+    <Content Include="images\food\hamburger.jpg" />
+    <Content Include="images\food\healthy.jpg" />
+    <Content Include="images\kitchenware\blender.jpg" />
+    <Content Include="images\kitchenware\casserole.jpg" />
+    <Content Include="images\kitchenware\chopping-board.jpg" />
+    <Content Include="images\kitchenware\colander.jpg" />
+    <Content Include="images\kitchenware\cookware.jpg" />
+    <Content Include="images\kitchenware\cutlery.jpg" />
+    <Content Include="images\kitchenware\dishwasher.jpg" />
+    <Content Include="images\kitchenware\food-processor.jpg" />
+    <Content Include="images\kitchenware\frying-pan.jpg" />
+    <Content Include="images\kitchenware\grater.jpg" />
+    <Content Include="images\kitchenware\grill.jpg" />
+    <Content Include="images\kitchenware\hotplate.jpg" />
+    <Content Include="images\kitchenware\kettle.jpg" />
+    <Content Include="images\kitchenware\refrigerator.jpg" />
+    <Content Include="images\kitchenware\saucepan.jpg" />
+    <Content Include="images\kitchenware\sink.jpg" />
+    <Content Include="images\kitchenware\spatula.jpg" />
+    <Content Include="images\kitchenware\stockpot.jpg" />
+    <Content Include="images\kitchenware\stove.jpg" />
+    <Content Include="images\kitchenware\tableware.jpg" />
+    <Content Include="images\kitchenware\toaster.jpg" />
+    <Content Include="images\kitchenware\utensils.jpg" />
+    <Content Include="images\kitchenware\vegetable-peeler.jpg" />
+    <Content Include="images\kitchenware\wok.jpg" />
+    <Content Include="images\products\1\0dairy.jpg" />
+    <Content Include="images\products\1\brie.jpg" />
+    <Content Include="images\products\1\butter.jpg" />
+    <Content Include="images\products\1\camembert.jpg" />
+    <Content Include="images\products\1\cheddar-cheese.jpg" />
+    <Content Include="images\products\1\cheese-wheel-gouda.jpg" />
+    <Content Include="images\products\1\condensed-milk.jpg" />
+    <Content Include="images\products\1\cottage-cheese.jpg" />
+    <Content Include="images\products\1\cream-cheese.jpg" />
+    <Content Include="images\products\1\double-cream.jpg" />
+    <Content Include="images\products\1\edam.jpg" />
+    <Content Include="images\products\1\feta.jpg" />
+    <Content Include="images\products\1\frozen-yoghurt.jpg" />
+    <Content Include="images\products\1\gelato.jpg" />
+    <Content Include="images\products\1\ice-cream.jpg" />
+    <Content Include="images\products\1\kiwi.jpg" />
+    <Content Include="images\products\1\milk-powder.jpg" />
+    <Content Include="images\products\1\milk.jpg" />
+    <Content Include="images\products\1\mozzarella.jpg" />
+    <Content Include="images\products\1\parmesan.jpg" />
+    <Content Include="images\products\1\processed-cheese-slices.jpg" />
+    <Content Include="images\products\1\ricotta.jpg" />
+    <Content Include="images\products\1\swiss-cheese.jpg" />
+    <Content Include="images\products\1\whipped-cream.jpg" />
+    <Content Include="images\products\1\windsor-blue.jpg" />
+    <Content Include="images\products\1\yogurt.jpg" />
+    <Content Include="images\products\2\0fruits.jpg" />
+    <Content Include="images\products\2\apple.jpg" />
+    <Content Include="images\products\2\apricot.jpg" />
+    <Content Include="images\products\2\avocado.jpg" />
+    <Content Include="images\products\2\banana.jpg" />
+    <Content Include="images\products\2\blackberry.jpg" />
+    <Content Include="images\products\2\cantaloupe.jpg" />
+    <Content Include="images\products\2\cherry.jpg" />
+    <Content Include="images\products\2\fig.jpg" />
+    <Content Include="images\products\2\grapes.jpg" />
+    <Content Include="images\products\2\green-olives.jpg" />
+    <Content Include="images\products\2\kiwi.jpg" />
+    <Content Include="images\products\2\lemon.jpg" />
+    <Content Include="images\products\2\lime.jpg" />
+    <Content Include="images\products\2\mango.jpg" />
+    <Content Include="images\products\2\mangosteen.jpg" />
+    <Content Include="images\products\2\orange.jpg" />
+    <Content Include="images\products\2\papaya.jpg" />
+    <Content Include="images\products\2\peach.jpg" />
+    <Content Include="images\products\2\pineapple.jpg" />
+    <Content Include="images\products\2\plum.jpg" />
+    <Content Include="images\products\2\raisins.jpg" />
+    <Content Include="images\products\2\strawberry.jpg" />
+    <Content Include="images\products\2\tomato.jpg" />
+    <Content Include="images\products\2\watermelon.jpg" />
+    <Content Include="images\products\3\0grains-beans-nuts.jpg" />
+    <Content Include="images\products\3\almonds.jpg" />
+    <Content Include="images\products\3\black-eyed-peas.jpg" />
+    <Content Include="images\products\3\bread.jpg" />
+    <Content Include="images\products\3\breakfast-cereal.jpg" />
+    <Content Include="images\products\3\cashew-nuts.jpg" />
+    <Content Include="images\products\3\chestnuts.jpg" />
+    <Content Include="images\products\3\chickpeas.jpg" />
+    <Content Include="images\products\3\cocoa-beans.jpg" />
+    <Content Include="images\products\3\coconut.jpg" />
+    <Content Include="images\products\3\coffee-beans.jpg" />
+    <Content Include="images\products\3\corn.jpg" />
+    <Content Include="images\products\3\flour-tortilla.jpg" />
+    <Content Include="images\products\3\flour.jpg" />
+    <Content Include="images\products\3\honey.jpg" />
+    <Content Include="images\products\3\lima-beans.jpg" />
+    <Content Include="images\products\3\oatmeal.jpg" />
+    <Content Include="images\products\3\peanuts.jpg" />
+    <Content Include="images\products\3\pinto-beans.jpg" />
+    <Content Include="images\products\3\pistachio-nuts.jpg" />
+    <Content Include="images\products\3\rice.jpg" />
+    <Content Include="images\products\3\walnuts.jpg" />
+    <Content Include="images\products\3\wheat.jpg" />
+    <Content Include="images\products\4\0meat.jpg" />
+    <Content Include="images\products\4\bacon.jpg" />
+    <Content Include="images\products\4\beef-sausage.jpg" />
+    <Content Include="images\products\4\beef-spare-ribs.jpg" />
+    <Content Include="images\products\4\chicken-breast.jpg" />
+    <Content Include="images\products\4\chicken-drumstick.jpg" />
+    <Content Include="images\products\4\chicken-whole.jpg" />
+    <Content Include="images\products\4\chicken-wings.jpg" />
+    <Content Include="images\products\4\duck.jpg" />
+    <Content Include="images\products\4\fillet-steak.jpg" />
+    <Content Include="images\products\4\goat.jpg" />
+    <Content Include="images\products\4\ham-sliced.jpg" />
+    <Content Include="images\products\4\ham.jpg" />
+    <Content Include="images\products\4\leg-of-lamb.jpg" />
+    <Content Include="images\products\4\leg-of-pork.jpg" />
+    <Content Include="images\products\4\liver.jpg" />
+    <Content Include="images\products\4\mutton.jpg" />
+    <Content Include="images\products\4\ox-heart.jpg" />
+    <Content Include="images\products\4\ox-tongue.jpg" />
+    <Content Include="images\products\4\pork-minced.jpg" />
+    <Content Include="images\products\4\rabbit.jpg" />
+    <Content Include="images\products\4\t-bone-steak.jpg" />
+    <Content Include="images\products\4\topside-beef.jpg" />
+    <Content Include="images\products\4\tripe.jpg" />
+    <Content Include="images\products\4\turkey.jpg" />
+    <Content Include="images\products\5\0seafood.jpg" />
+    <Content Include="images\products\5\calamari.jpg" />
+    <Content Include="images\products\5\carp.jpg" />
+    <Content Include="images\products\5\caviar.jpg" />
+    <Content Include="images\products\5\cod.jpg" />
+    <Content Include="images\products\5\crab-2.jpg" />
+    <Content Include="images\products\5\crayfish.jpg" />
+    <Content Include="images\products\5\eel.jpg" />
+    <Content Include="images\products\5\fish.jpg" />
+    <Content Include="images\products\5\lobster.jpg" />
+    <Content Include="images\products\5\mussels.jpg" />
+    <Content Include="images\products\5\octopus.jpg" />
+    <Content Include="images\products\5\oysters.jpg" />
+    <Content Include="images\products\5\periwinkles.jpg" />
+    <Content Include="images\products\5\prawn.jpg" />
+    <Content Include="images\products\5\salmon-fillet.jpg" />
+    <Content Include="images\products\5\salmon-roe.jpg" />
+    <Content Include="images\products\5\sardines-can.jpg" />
+    <Content Include="images\products\5\scallop.jpg" />
+    <Content Include="images\products\5\shrimp.jpg" />
+    <Content Include="images\products\5\smoked-fish.jpg" />
+    <Content Include="images\products\5\snapper-fish.jpg" />
+    <Content Include="images\products\5\snapper.jpg" />
+    <Content Include="images\products\5\tuna-fish.jpg" />
+    <Content Include="images\products\5\tuna-steak.jpg" />
+    <Content Include="images\products\6\0vegetables.jpg" />
+    <Content Include="images\products\6\artichoke.jpg" />
+    <Content Include="images\products\6\asparagus.jpg" />
+    <Content Include="images\products\6\beetroot.jpg" />
+    <Content Include="images\products\6\bellpepper.jpg" />
+    <Content Include="images\products\6\broccoli.jpg" />
+    <Content Include="images\products\6\brussels-sprouts.jpg" />
+    <Content Include="images\products\6\cabbage.jpg" />
+    <Content Include="images\products\6\carrot.jpg" />
+    <Content Include="images\products\6\cauliflower.jpg" />
+    <Content Include="images\products\6\celery.jpg" />
+    <Content Include="images\products\6\cucumber.jpg" />
+    <Content Include="images\products\6\eggplant.jpg" />
+    <Content Include="images\products\6\garlic.jpg" />
+    <Content Include="images\products\6\lettuce.jpg" />
+    <Content Include="images\products\6\mushrooms.jpg" />
+    <Content Include="images\products\6\onion.jpg" />
+    <Content Include="images\products\6\pea.jpg" />
+    <Content Include="images\products\6\potato.jpg" />
+    <Content Include="images\products\6\pumpkin.jpg" />
+    <Content Include="images\products\6\spinach.jpg" />
+    <Content Include="images\products\6\string-beans.jpg" />
+    <Content Include="images\products\6\tomato.jpg" />
+    <Content Include="images\products\6\turnip.jpg" />
+    <Content Include="images\products\6\yam.jpg" />
+    <Content Include="images\products\6\zuchini.jpg" />
+    <Content Include="images\products\juicer\lemons.jpg" />
+    <Content Include="images\products\juicer\mandarins.jpg" />
+    <Content Include="images\products\juicer\pears.jpg" />
+    <Content Include="images\recipes\cranAppleJuice.jpg" />
+    <Content Include="images\recipes\farmersMarketJuice.jpg" />
+    <Content Include="images\recipes\grasshopper.jpg" />
+    <Content Include="images\recipes\greenEyeCatcher.jpg" />
+    <Content Include="images\recipes\hangoverRemedy.jpg" />
+    <Content Include="images\recipes\redSensation.jpg" />
+    <Content Include="images\recipes\summerSun.jpg" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\DataTables\css\common.scss" />
+    <None Include="Properties\PublishProfiles\CookBook-Codera - Web Deploy.pubxml" />
+    <Content Include="README.md" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Recipes\Index.cshtml" />
+    <Content Include="Views\Recipes\Details.cshtml" />
+    <Content Include="Views\Products\List.cshtml" />
+    <Content Include="Views\Products\ProductForm.cshtml" />
+    <Content Include="Views\Products\ViewProduct.cshtml" />
+    <Content Include="Views\Products\ReadOnlyList.cshtml" />
+    <Content Include="Views\Recipes\New.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202001241114535_InitialModel.resx">
+      <DependentUpon>202001241114535_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001241339064_UpdateRecipeAndProductModels.resx">
+      <DependentUpon>202001241339064_UpdateRecipeAndProductModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001241343421_PopulateUnitsTable.resx">
+      <DependentUpon>202001241343421_PopulateUnitsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001241434388_CorrectProductClass.resx">
+      <DependentUpon>202001241434388_CorrectProductClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001271050542_DeleteUnitAndAmount.resx">
+      <DependentUpon>202001271050542_DeleteUnitAndAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002061156357_DeletePhotoClass.resx">
+      <DependentUpon>202002061156357_DeletePhotoClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002061958292_RestoreRecipeProductTable.resx">
+      <DependentUpon>202002061958292_RestoreRecipeProductTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002101140529_AddValidation.resx">
+      <DependentUpon>202002101140529_AddValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002101402164_AddManyToManyRelationshipBetweenProductsAndRecipes.resx">
+      <DependentUpon>202002101402164_AddManyToManyRelationshipBetweenProductsAndRecipes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002101403072_AddManyToManyRelationshipBetweenProductsAndRecipes1.resx">
+      <DependentUpon>202002101403072_AddManyToManyRelationshipBetweenProductsAndRecipes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002101418302_AddManyToManyRelationshipBetweenProductsAndRecipes2.resx">
+      <DependentUpon>202002101418302_AddManyToManyRelationshipBetweenProductsAndRecipes2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002111135104_AddCategoryUnitAndIngredientModels.resx">
+      <DependentUpon>202002111135104_AddCategoryUnitAndIngredientModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002111145055_AddCategoryUnitAndIngredientModels1.resx">
+      <DependentUpon>202002111145055_AddCategoryUnitAndIngredientModels1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121901282_PopulateUnitDB.resx">
+      <DependentUpon>202002121901282_PopulateUnitDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121926261_PopulateCategoryTable.resx">
+      <DependentUpon>202002121926261_PopulateCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002141409490_TruncateProductsTable.resx">
+      <DependentUpon>202002141409490_TruncateProductsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002141416164_Truncate2ProductsTable.resx">
+      <DependentUpon>202002141416164_Truncate2ProductsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002141431407_UpdateProductModelDataAnnotations.resx">
+      <DependentUpon>202002141431407_UpdateProductModelDataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171830229_UpdateProductModel.resx">
+      <DependentUpon>202002171830229_UpdateProductModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171902139_DropColumnCategory_Id.resx">
+      <DependentUpon>202002171902139_DropColumnCategory_Id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171955148_CategoryIdNotNullable.resx">
+      <DependentUpon>202002171955148_CategoryIdNotNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002172007146_AddPhotoModel.resx">
+      <DependentUpon>202002172007146_AddPhotoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002172054416_DeletePhotoModel.resx">
+      <DependentUpon>202002172054416_DeletePhotoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002180616362_UpdateProductDataAnnotations.resx">
+      <DependentUpon>202002180616362_UpdateProductDataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002182255559_UpdateIngredientModel.resx">
+      <DependentUpon>202002182255559_UpdateIngredientModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002191213094_SeedUsers.resx">
+      <DependentUpon>202002191213094_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003140245015_ExchangeIngredientsToProducts.resx">
+      <DependentUpon>202003140245015_ExchangeIngredientsToProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003140247498_AddRecipesListToProductModel.resx">
+      <DependentUpon>202003140247498_AddRecipesListToProductModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003140312165_ExchangeRecipeProductsToIngredientsTable.resx">
+      <DependentUpon>202003140312165_ExchangeRecipeProductsToIngredientsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003140758030_AddUnitAndAmountToIngredientModel.resx">
+      <DependentUpon>202003140758030_AddUnitAndAmountToIngredientModel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56294</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44363/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
